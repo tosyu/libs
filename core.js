@@ -1,4 +1,5 @@
 /*jslint regexp: false, unparam: true, forin: true, nomen: true, maxerr: 50, indent: 4 */
+/*global ts: true */
 if (typeof ts === 'undefined') {
 	var ts = {
 		'core': {}
