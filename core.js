@@ -59,10 +59,22 @@ if (typeof ts === 'undefined') {
 
 	ts.core.Class.prototype = {
 		'init': function ts_core_Class_init(initargs) {
+			var name;
 			this.__CLASS__ = initargs.callee.toString().match(/function\s?([a-zA-Z\-_]*)\s?\(/im)[1];
+			if (typeof initargs[0] === 'object') {
+		        for (name in initargs[0]) {
+		            if (initargs[0].hasOwnProperty(name)) {
+		                this[name] = initargs[0][name];
+		            }
+		        }
+		    }
 		},
-		'toString': function ts_core_Class__toString() {
+		'toString': function ts_core_Class_toString() {
 			return this.__CLASS__; // @TODO
-		}
+		},
+		'log': function ts_core_Class_log() {
+	        var dt = new Date();
+	        console.log(['[', this.__CLASS__, ']', dt.toUTCString()].join(' '), arguments);
+	    }
 	};
 }(ts));
