@@ -54,7 +54,7 @@ if (typeof ts === 'undefined') {
 
 	ts.core.Class = function Class(value) {
 		this.init(arguments);
-	}
+	};
 
 	ts.core.Class.prototype = {
 		'init': function BaseClass_init(initargs) {
@@ -65,4 +65,3 @@ if (typeof ts === 'undefined') {
 		}
 	};
 }(ts));
-
