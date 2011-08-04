@@ -37,6 +37,21 @@ if (typeof ts === 'undefined') {
 		return this;
 	};
 
+	if (typeof Function.prototype.bind === 'undefined') {
+		Function.prototype.bind = function (_this) {
+			if (typeof this !== "function") {
+				// closest thing possible to the ECMAScript 5 internal IsCallable function
+				throw new TypeError("Function.prototype.bind - what is trying to be Bound is not callable");
+			}
+			var args = Array.prototype.slice.call(arguments, 1), ToBind = this, Nop = function () {}, Bound = function () {
+				return ToBind.apply(this instanceof Nop ? this : _this || window, args.concat(Array.prototype.slice.call(arguments)));
+			};
+			Nop.prototype = this.prototype;
+			Bound.prototype = new Nop();
+			return Bound;
+		};
+	}
+
 	Function.prototype.swiss = function swiss(parent) {
 		var i;
 		for (i = 1; i < arguments.length; i += 1) {
