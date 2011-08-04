@@ -57,10 +57,10 @@ if (typeof ts === 'undefined') {
 	};
 
 	ts.core.Class.prototype = {
-		'init': function BaseClass_init(initargs) {
+		'init': function ts_core_Class_init(initargs) {
 			this.__CLASS__ = initargs.callee.toString().match(/function\s?([a-zA-Z\-_]*)\s?\(/im)[1];
 		},
-		'toString': function BaseClass_toString() {
+		'toString': function ts_core_Class__toString() {
 			return this.__CLASS__; // @TODO
 		}
 	};
