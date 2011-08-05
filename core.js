@@ -1,14 +1,6 @@
 /*jslint regexp: false, unparam: true, forin: true, nomen: true, maxerr: 50, indent: 4 */
-/*global ts: true */
-if (typeof ts === 'undefined') {
-	var ts = {
-		'core': {}
-	};
-} else if (typeof ts.core === 'undefined') {
-	ts.core = {};
-}
-
-(function (ts) {
+/*global window: true */
+(function () {
 	"use strict";
 	Function.prototype.inherits = function inherits(Parent) {
 		var d = {}, p = (this.prototype = new Parent());
@@ -66,8 +58,19 @@ if (typeof ts === 'undefined') {
 			this.prototype[i] = object[i];
 		}
 	};
+}());
 
+/*jslint sloppy: true, regexp: false, unparam: true, forin: true, nomen: true, maxerr: 50, indent: 4 */
+/*global ts: true, console: true */
+if (typeof ts === 'undefined') {
+	var ts = {
+		'core': {}
+	};
+} else if (typeof ts.core === 'undefined') {
+	ts.core = {};
+}
 
+(function (ts) {
 	ts.core.Class = function Class(value) {
 		this.init(arguments);
 	};
@@ -91,5 +94,5 @@ if (typeof ts === 'undefined') {
 	        var dt = new Date();
 	        console.log(['[', this.__CLASS__, ']', dt.toUTCString()].join(' '), arguments);
 	    }
-	};
+	};	
 }(ts));
